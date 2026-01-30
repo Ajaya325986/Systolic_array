@@ -176,7 +176,7 @@ This ensured robust connectivity and eliminated PDN trimming.
 ### Key Fixes
 - Manual constraints for SRAM outputs
 - Aggressive buffering
-- Target density tuned to ~0.60
+- Target density tuned to ~0.83
 - Hold repair enabled
 - Antenna violations fixed using jumper insertion
 
