@@ -39,7 +39,7 @@ After reaching physical limits, the RTL and floorplan were redesigned around **t
 ## 🧭 Project Evolution
 
 ## 📸 Final Layout (GDSII)
-![Final GDS View](./docs/images/gds_final.png)
+![Final GDS View](./docs/images/gds_cover.png)
 *Fig 1: Final GDSII showing 3x SRAM Macros (Red) and Standard Cell Logic routing (M1-M5).*
 
 ### Phase 1: Macro-less Architecture (Intentional Stress Test)
