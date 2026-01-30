@@ -1,74 +1,237 @@
-# Systolic_1M: High-Performance Tensor Core on Sky130 🚀
+# 🧠 Systolic_array  
+### High-Performance Systolic Array Accelerator on Sky130 🚀
 
 ![Status](https://img.shields.io/badge/Status-Tapeout_Ready-success)
 ![PDK](https://img.shields.io/badge/PDK-Sky130-blue)
 ![Flow](https://img.shields.io/badge/Flow-OpenLane-orange)
-![Speed](https://img.shields.io/badge/Speed-125MHz-brightgreen)
-
-## 📌 Overview
-**Systolic_1M** is a hardened Systolic Array core designed for Matrix Multiplication acceleration (Tensor Processing). Implemented using the **OpenLane** open-source flow and **SkyWater 130nm** PDK, this design integrates **120k logic gates** and **3 Hard Macros (SRAMs)** into a compact 1.49mm² core.
-
-This project focuses on resolving complex Physical Design bottlenecks including routing congestion in narrow channels, macro power delivery, and signoff LVS violations.
+![Frequency](https://img.shields.io/badge/Frequency-125MHz-brightgreen)
 
 ---
 
-## 📸 Final Layout (GDSII)
-![Final GDS View](./docs/images/gds_cover.png)
-*Fig 1: Final GDSII showing 3x SRAM Macros (Red) and Standard Cell Logic (Blue/Purple).*
+## 📌 Overview
+
+**Systolic_array** is a hardened systolic array accelerator designed for matrix multiplication workloads.  
+The design is implemented using the **OpenLane RTL-to-GDS flow** on **SkyWater 130nm**.
+
+This project was intentionally started **without SRAM macros** to expose real-world Physical Design bottlenecks such as congestion, fanout explosion, PDN failures, LVS mismatches, and timing instability.  
+After reaching physical limits, the RTL and floorplan were redesigned around **three SRAM macros**, resulting in a compact, routable, and timing-closed design.
 
 ---
 
 ## ⚡ Key Specifications
-| Metric | Value | Notes |
-| :--- | :--- | :--- |
-| **Technology** | SkyWater 130nm | Open Source PDK |
-| **Clock Frequency** | **125 MHz** | Met Setup/Hold across all corners |
-| **Die Area** | 1.49 mm² | Optimized for 83% Utilization |
-| **Gate Count** | ~120,000 | + 3x 32x256 SRAM Macros |
-| **Power Strategy** | 1.8V | Custom PDN with 5% IR Drop Limit |
-| **Status** | **DRC/LVS Clean** | 0 Violations |
+
+| Metric | Value |
+|------|------|
+| Technology | SkyWater 130nm |
+| Flow | OpenLane / OpenROAD |
+| Core Area | **1.49 mm²** |
+| Gate Count | **~120k** |
+| SRAM Macros | **3 × 32×256** |
+| Clock Frequency | **125 MHz** |
+| Supply Voltage | 1.8 V |
+| Utilization | ~83% |
+| IR Drop Target | 5% |
+| DRC | Clean |
+| LVS | Clean |
 
 ---
 
-## 🛠️ The Engineering Journey ("War Stories")
-Physical Design is about solving problems. Here is how I debugged the critical issues in this core:
+## 🧭 Project Evolution
 
-### 1. The "Bowling Alley" Congestion Fix
-**The Problem:** Initial macro placement created narrow channels between SRAMs. The router failed with **250% overflow** trying to force 32k cells through these gaps.
-**The Solution:**
-* Redesigned floorplan to a U-Shape configuration.
-* Applied custom `PL_MACRO_HALO` constraints to reserve routing resources.
-* Used `RT_MIN_LAYER` to force global signals to Metal 3-5.
+### Phase 1: Macro-less Architecture (Intentional Stress Test)
+
+The project began without SRAM macros, storing all state using flip-flops.
+
+#### Issues Observed
+- 6–7× flip-flop overhead
+- Area expanded to ~11 mm²
+- Extreme routing congestion
+- Fanout and slew violations
+- Impossible timing closure
+
+#### Routing Failure & Congestion (No Macros)
+![Routing failure without macros](./docs/images/Rotuing_failure_without_macros.png)
+
+**Fig 1:** Congestion heat map showing >250% overflow caused by forcing tens of thousands of standard cells through narrow routing channels.
+
+This phase confirmed that **architecture decisions directly define physical feasibility**.
+
+---
+
+## Phase 2: Macro-Based Redesign
+
+To resolve scalability issues, the RTL was redesigned using **three SRAM macros** for storage.
+
+### Benefits
+- Massive reduction in flip-flop count
+- Area reduced by ~7×
+- Improved routability
+- Feasible PDN and timing closure
+
+However, macro integration introduced new Physical Design challenges.
+
+---
+
+## 🧱 Floorplanning Strategy (U-Shape)
+
+Initial macro placement created narrow “bowling-alley” channels that trapped routing.
+
+### Final Floorplan
+![U-Shape Floorplan](./docs/images/floorplan_u_shape.png)
+
+**Fig 2:** U-shape macro placement along the edges, creating a wide central routing region.
+
+### Key Techniques
+- U-shape macro placement
+- Custom `PL_MACRO_HALO` constraints
+- Aspect-ratio optimization
+- Macro alignment to routing grid
+
+---
+
+## 🧩 Standard Cell Placement
+
+![Standard Cell Placement](./docs/images/std_cell_placement.png)
+
+**Fig 3:** Standard cell placement after congestion optimization, showing balanced density and whitespace for buffering and ECOs.
+
+---
+
+## 🚦 Congestion Analysis & Resolution
+
 ![Congestion Map](./docs/images/congestion_map.png)
-*Fig 2: Routing Congestion Map showing clean routing (Blue) after optimization.*
 
-### 2. Solving 5,430 LVS Violations
-**The Problem:** Signoff failed with thousands of mismatches.
-**Root Causes & Fixes:**
-* **Row Orientation:** "Flipped South" (FS) cells were placed in "North" (N) rows, causing VDD/VSS shorts. Fixed via legalizer constraints.
-* **Floating Inputs:** Unused ports on Dual-Port SRAMs were floating, causing leakage. I modified the Verilog/Tcl to tie unused Clock to Ground and Address lines to `8'h00`.
+**Fig 4:** Post-optimization congestion map with overflow reduced below 100%.
 
-### 3. Custom Power Distribution (PDN)
-**The Problem:** The tool was "trimming" (deleting) Metal 5 power stripes because they weren't connecting to standard cells.
-**The Solution:** Wrote a custom `pdn_cfg.tcl` script to explicitly define the Vias and connections from M1 → M4 → M5, ensuring a robust mesh.
+### Root Cause
+- Global utilization was low (~46%)
+- Local congestion caused by macro spacing and IO density
+- Router could not insert buffers to fix slew and fanout
+
+### Fixes Applied
+- Reduced `FP_CORE_UTIL`
+- Enabled aggressive buffering
+- Forced routing to upper metal layers (`RT_MIN_LAYER`)
+- Spread IO pins using `FP_IO_MODE 1`
+
+---
+
+## ⚡ Power Distribution Network (PDN)
+
+### Issues Encountered
+- Missing horizontal Metal-5 straps
+- PDN stripes trimmed due to floating connections
+- Macro power pins not aligning with grid
+
+### Solution
+A custom `pdn_cfg.tcl` was written to explicitly define the full power stack:
+
+
+This ensured robust connectivity and eliminated PDN trimming.
+
+---
+
+## 🔍 LVS Debugging (5,430 → 0)
+
+### Major Root Causes
+1. Floating inputs on unused SRAM ports  
+2. Unused dual-port clocks left floating  
+3. Row orientation mismatch (MX cells in N rows)  
+4. Macro pin hook-up blockages  
+
+### Fixes
+- Tied unused clocks to **VSS**
+- Disabled unused macro ports via enable pins
+- Used **Tie-Hi / Tie-Lo** cells
+- Legalized cell orientations
+- Increased macro keep-out margins
+
+---
+
+## 🧪 DRC Status
+
+### Before Fix
+![DRC Violated](./docs/images/DRC_violated.png)
+
+**Fig 5:** DRC violations due to PDN overlap and insufficient macro spacing.
+
+### After Fix
+![DRC Clean](./docs/images/DRC_clean.png)
+
+**Fig 6:** Clean DRC after halo tuning, PDN offset correction, and cell padding.
+
+---
+
+## ⏱️ Timing Closure
+
+### Initial State
+- 10 ns clock (100 MHz)
+- Unconstrained SRAM outputs
+- Max slew and fanout violations
+
+### Key Fixes
+- Manual constraints for SRAM outputs
+- Aggressive buffering
+- Target density tuned to ~0.60
+- Hold repair enabled
+- Antenna violations fixed using jumper insertion
+
+### Final Result
+- Clock period: **8 ns**
+- Frequency: **125 MHz**
+- Setup slack: ~+70 ps
+- Hold: Clean
+
+![CTS Highlight](./docs/images/cts_highlight.png)
+
+**Fig 7:** Clock Tree Synthesis with balanced insertion delay and clean skew.
+
+---
+
+## 🔥 Power Integrity & Reliability
+
+### Dynamic IR Drop
+- Worst-case voltage: **1.57 V**
+- Voltage drop: ~228 mV (~12%)
+- Verdict: Functionally safe
+
+### Electromigration
+- Peak current: ~34 mA
+- Result: **0 EM violations**
+
+---
+
+## 🛠️ Automation & Tooling
+
+- Custom Tcl scripts for:
+  - Worst timing path extraction
+  - Slew and fanout analysis
+  - PDN generation
+- OpenROAD GUI used for:
+  - LVS debugging
+  - Orientation verification
+  - Macro alignment
 
 ---
 
 ## 📂 Repository Structure
-* `src/`: Verilog source code.
-* `openlane/`: Configuration files (`config.tcl`, `macro.cfg`).
-* `scripts/`: Custom Tcl scripts for congestion analysis and LVS fixes.
-* `docs/`: Detailed PPA reports and logs.
 
-## 🚀 How to Run
-To reproduce this layout using OpenLane:
 
-```bash
-# Clone the repo
-git clone [https://github.com/YOUR_USERNAME/systolic_1M.git](https://github.com/YOUR_USERNAME/systolic_1M.git)
+---
 
-# Enter OpenLane container
-make mount
+## 🚀 Final Status
 
-# Run the flow
-./flow.tcl -design systolic_1M -tag final_run
+- ✅ 125 MHz timing closed  
+- ✅ DRC clean  
+- ✅ LVS clean  
+- ✅ IR & EM verified  
+- ✅ Compact **1.49 mm²** core  
+
+This project demonstrates **end-to-end Physical Design ownership**, from architectural trade-offs to signoff-level debugging.
+
+---
+
+## 👤 Author
+
+**Ajay H R**  
+Physical Design Engineer | OpenLane | Sky130
