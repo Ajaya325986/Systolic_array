@@ -1,0 +1,19 @@
+Design Name: chip_top
+Run Directory: /openlane/designs/Tensor/runs/pre-final_run
+----------------------------------------
+
+Magic DRC Summary:
+Source: /openlane/designs/systolic_1M/runs/run_opt/reports/signoff/drc.rpt
+Total Magic DRC violations is 0
+----------------------------------------
+
+LVS Summary:
+Source: /openlane/designs/Tensor/runs/pre-final_run/logs/signoff/110-chip_top.lef.lvs.log
+Number of nets: 30367                      |Number of nets: 30367                      
+Design is LVS clean.
+----------------------------------------
+
+Antenna Summary:
+Source: /openlane/designs/systolic_1M/runs/run_opt/reports/signoff/antenna.rpt
+Total Magic Antenna violations is 0
+----------------------------------------

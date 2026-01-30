@@ -1,0 +1,28 @@
+
+51. Printing statistics.
+
+=== chip_top ===
+
+   Number of wires:              27010
+   Number of wire bits:          32295
+   Number of public wires:         141
+   Number of public wire bits:    2491
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:              29306
+     $_ANDNOT_                    7344
+     $_AND_                       3819
+     $_DFFE_PP_                     32
+     $_DFF_PN0_                   1550
+     $_DFF_PN1_                      1
+     $_DFF_P_                       48
+     $_NAND_                      1266
+     $_NOR_                       1811
+     $_NOT_                        947
+     $_ORNOT_                     1068
+     $_OR_                        2516
+     $_XNOR_                      2562
+     $_XOR_                       6339
+     sky130_sram_1kbyte_1rw1r_32x256_8      3
+
