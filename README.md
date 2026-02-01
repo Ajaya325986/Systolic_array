@@ -181,7 +181,7 @@ This ensured robust connectivity and eliminated PDN trimming.
 - Antenna violations fixed using jumper insertion
 
 ### Final Result
-- Clock period: **8 ns**
+- Clock period: **7.305 ns**
 - Frequency: **136.89 MHz**
 - Setup slack: ~+70 ps
 - Hold: Clean
