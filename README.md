@@ -4,7 +4,7 @@
 ![Status](https://img.shields.io/badge/Status-Tapeout_Ready-success)
 ![PDK](https://img.shields.io/badge/PDK-Sky130-blue)
 ![Flow](https://img.shields.io/badge/Flow-OpenLane-orange)
-![Frequency](https://img.shields.io/badge/Frequency-125MHz-brightgreen)
+![Frequency](https://img.shields.io/badge/Frequency-136.89MHz-brightgreen)
 
 ---
 
@@ -27,7 +27,7 @@ After reaching physical limits, the RTL and floorplan were redesigned around **t
 | Core Area | **1.49 mm²** |
 | Gate Count | **~120k** |
 | SRAM Macros | **3 × 32×256** |
-| Clock Frequency | **125 MHz** |
+| Clock Frequency | **136.89 MHz** |
 | Supply Voltage | 1.8 V |
 | Utilization | ~83% |
 | IR Drop Target | 5% |
@@ -182,7 +182,7 @@ This ensured robust connectivity and eliminated PDN trimming.
 
 ### Final Result
 - Clock period: **8 ns**
-- Frequency: **125 MHz**
+- Frequency: **136.89 MHz**
 - Setup slack: ~+70 ps
 - Hold: Clean
 
@@ -225,7 +225,7 @@ This ensured robust connectivity and eliminated PDN trimming.
 
 ## 🚀 Final Status
 
-- ✅ 125 MHz timing closed  
+- ✅ 136.89 MHz timing closed  
 - ✅ DRC clean  
 - ✅ LVS clean  
 - ✅ IR & EM verified  

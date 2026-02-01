@@ -1,0 +1,145 @@
+OpenROAD 41a51eaf4ca2171c92ff38afb91eb37bbd3f36da 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO]: Reading ODB at '/openlane/designs/Tensor/runs/PrePre-final_run/results/placement/chip_top.odb'…
+define_corners Slowest Typical Fastest
+read_liberty -corner Slowest /openlane/designs/Tensor/runs/PrePre-final_run/tmp/cts/cts-slowest.lib
+read_liberty -corner Slowest /home/n0b0dy/.ciel/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_1kbyte_1rw1r_8x1024_8_TT_1p8V_25C.lib
+read_liberty -corner Typical /openlane/designs/Tensor/runs/PrePre-final_run/tmp/cts/cts.lib
+read_liberty -corner Typical /home/n0b0dy/.ciel/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_1kbyte_1rw1r_8x1024_8_TT_1p8V_25C.lib
+[WARNING STA-0053] /home/n0b0dy/.ciel/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_1kbyte_1rw1r_8x1024_8_TT_1p8V_25C.lib line 1, library sky130_sram_1kbyte_1rw1r_8x1024_8_TT_1p8V_25C_lib already exists.
+read_liberty -corner Fastest /openlane/designs/Tensor/runs/PrePre-final_run/tmp/cts/cts-fastest.lib
+read_liberty -corner Fastest /home/n0b0dy/.ciel/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_1kbyte_1rw1r_8x1024_8_TT_1p8V_25C.lib
+[WARNING STA-0053] /home/n0b0dy/.ciel/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_1kbyte_1rw1r_8x1024_8_TT_1p8V_25C.lib line 1, library sky130_sram_1kbyte_1rw1r_8x1024_8_TT_1p8V_25C_lib already exists.
+Using 1e-12 for capacitance...
+Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Reading design constraints file at '/openlane/designs/Tensor/runs/PrePre-final_run/tmp/placement/78-resizer.sdc'…
+[INFO]: Setting RC values...
+[INFO]: Configuring cts characterization...
+[INFO]: Performing clock tree synthesis...
+[INFO]: Looking for the following net(s): clk
+[INFO]: Running Clock Tree Synthesis...
+[INFO CTS-0049] Characterization buffer is: sky130_fd_sc_hd__clkbuf_16.
+[INFO CTS-0038] Number of created patterns = 50000.
+[INFO CTS-0038] Number of created patterns = 100000.
+[INFO CTS-0038] Number of created patterns = 150000.
+[INFO CTS-0038] Number of created patterns = 200000.
+[INFO CTS-0038] Number of created patterns = 250000.
+[INFO CTS-0038] Number of created patterns = 300000.
+[INFO CTS-0038] Number of created patterns = 350000.
+[INFO CTS-0038] Number of created patterns = 400000.
+[INFO CTS-0038] Number of created patterns = 450000.
+[INFO CTS-0038] Number of created patterns = 500000.
+[INFO CTS-0038] Number of created patterns = 550000.
+[INFO CTS-0038] Number of created patterns = 600000.
+[INFO CTS-0039] Number of created patterns = 640560.
+[INFO CTS-0084] Compiling LUT.
+Min. len    Max. len    Min. cap    Max. cap    Min. slew   Max. slew
+2           8           1           34          1           12          
+[WARNING CTS-0043] 8160 wires are pure wire and no slew degradation.
+TritonCTS forced slew degradation on these wires.
+[INFO CTS-0046]     Number of wire segments: 640560.
+[INFO CTS-0047]     Number of keys in characterization LUT: 1668.
+[INFO CTS-0048]     Actual min input cap: 1.
+[INFO CTS-0007] Net "clk" found for clock "clk".
+[INFO CTS-0010]  Clock net "clk" has 1634 sinks.
+[INFO CTS-0008] TritonCTS found 1 clock nets.
+[INFO CTS-0097] Characterization used 5 buffer(s) types.
+[INFO CTS-0027] Generating H-Tree topology for net clk.
+[INFO CTS-0028]  Total number of sinks: 1634.
+[INFO CTS-0029]  Sinks will be clustered in groups of up to 25 and with maximum cluster diameter of 50.0 um.
+[INFO CTS-0030]  Number of static layers: 0.
+[INFO CTS-0020]  Wire segment unit: 13000  dbu (13 um).
+[INFO CTS-0019]  Total number of sinks after clustering: 286.
+[INFO CTS-0024]  Normalized sink region: [(1.29423, 1.91038), (91.2365, 77.6402)].
+[INFO CTS-0025]     Width:  89.9423.
+[INFO CTS-0026]     Height: 75.7298.
+ Level 1
+    Direction: Horizontal
+    Sinks per sub-region: 143
+    Sub-region size: 44.9712 X 75.7298
+[INFO CTS-0034]     Segment length (rounded): 22.
+    Key: 18766 inSlew: 1 inCap: 1 outSlew: 2 load: 1 length: 8 delay: 1
+    Key: 18766 inSlew: 1 inCap: 1 outSlew: 2 load: 1 length: 8 delay: 1
+    Key: 3185 inSlew: 2 inCap: 1 outSlew: 3 load: 1 length: 6 delay: 1
+ Out of 286 sinks, 6 sinks closer to other cluster.
+ Level 2
+    Direction: Vertical
+    Sinks per sub-region: 72
+    Sub-region size: 44.9712 X 37.8649
+[INFO CTS-0034]     Segment length (rounded): 18.
+    Key: 3242 inSlew: 3 inCap: 1 outSlew: 1 load: 1 length: 8 delay: 10
+      location: 0.25 buffer: sky130_fd_sc_hd__clkbuf_16
+    Key: 18766 inSlew: 1 inCap: 1 outSlew: 2 load: 1 length: 8 delay: 1
+    Key: 60 inSlew: 1 inCap: 1 outSlew: 2 load: 1 length: 2 delay: 1
+ Level 3
+    Direction: Horizontal
+    Sinks per sub-region: 36
+    Sub-region size: 22.4856 X 37.8649
+[INFO CTS-0034]     Segment length (rounded): 12.
+    Key: 18785 inSlew: 2 inCap: 1 outSlew: 3 load: 1 length: 8 delay: 1
+    Key: 122 inSlew: 3 inCap: 1 outSlew: 1 load: 1 length: 4 delay: 10
+      location: 0.5 buffer: sky130_fd_sc_hd__clkbuf_16
+ Level 4
+    Direction: Vertical
+    Sinks per sub-region: 18
+    Sub-region size: 22.4856 X 18.9325
+[INFO CTS-0034]     Segment length (rounded): 10.
+    Key: 18766 inSlew: 1 inCap: 1 outSlew: 2 load: 1 length: 8 delay: 1
+    Key: 60 inSlew: 1 inCap: 1 outSlew: 2 load: 1 length: 2 delay: 1
+ Level 5
+    Direction: Horizontal
+    Sinks per sub-region: 9
+    Sub-region size: 11.2428 X 18.9325
+[INFO CTS-0034]     Segment length (rounded): 6.
+    Key: 3185 inSlew: 2 inCap: 1 outSlew: 3 load: 1 length: 6 delay: 1
+ Out of 13 sinks, 2 sinks closer to other cluster.
+ Out of 11 sinks, 1 sinks closer to other cluster.
+[INFO CTS-0032]  Stop criterion found. Max number of sinks is 15.
+[INFO CTS-0035]  Number of sinks covered: 286.
+[INFO CTS-0018]     Created 297 clock buffers.
+[INFO CTS-0012]     Minimum number of buffers in the clock path: 4.
+[INFO CTS-0013]     Maximum number of buffers in the clock path: 5.
+[INFO CTS-0015]     Created 297 clock nets.
+[INFO CTS-0016]     Fanout distribution for the current clock = 2:30, 3:46, 4:27, 5:22, 6:33, 7:23, 8:27, 9:14, 10:15, 11:11, 12:11, 13:9, 14:5, 15:5, 16:2, 17:2, 19:2..
+[INFO CTS-0017]     Max level of the clock tree: 5.
+[INFO CTS-0098] Clock net "clk"
+[INFO CTS-0099]  Sinks 1634
+[INFO CTS-0100]  Leaf buffers 252
+[INFO CTS-0101]  Average sink wire length 1467.61 um
+[INFO CTS-0102]  Path depth 4 - 5
+[INFO]: Repairing long wires on clock nets...
+[INFO RSZ-0058] Using max wire length 4508um.
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/Tensor/runs/PrePre-final_run/results/cts/chip_top.odb'…
+Writing layout to '/openlane/designs/Tensor/runs/PrePre-final_run/results/cts/chip_top.def'…
+Writing timing constraints to '/openlane/designs/Tensor/runs/PrePre-final_run/results/cts/chip_top.sdc'…
+[INFO]: Legalizing...
+Placement Analysis
+---------------------------------
+total displacement       3090.0 u
+average displacement        0.1 u
+max displacement           17.1 u
+original HPWL         1097303.0 u
+legalized HPWL        1123296.5 u
+delta HPWL                    2 %
+
+[INFO DPL-0020] Mirrored 12200 instances
+[INFO DPL-0021] HPWL before          1123296.5 u
+[INFO DPL-0022] HPWL after           1098740.8 u
+[INFO DPL-0023] HPWL delta               -2.2 %
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/Tensor/runs/PrePre-final_run/results/cts/chip_top.odb'…
+Writing layout to '/openlane/designs/Tensor/runs/PrePre-final_run/results/cts/chip_top.def'…
+Writing timing constraints to '/openlane/designs/Tensor/runs/PrePre-final_run/results/cts/chip_top.sdc'…
+cts_report
+[INFO CTS-0003] Total number of Clock Roots: 1.
+[INFO CTS-0004] Total number of Buffers Inserted: 297.
+[INFO CTS-0005] Total number of Clock Subnets: 297.
+[INFO CTS-0006] Total number of Sinks: 1634.
+cts_report_end

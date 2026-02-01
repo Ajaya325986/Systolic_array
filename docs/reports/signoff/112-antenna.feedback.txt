@@ -1,0 +1,40 @@
+box 139183 29219 139301 29329
+feedback add "device missing 1 terminal;
+ connecting remainder to node VGND" pale
+box 139183 28879 139301 29053
+feedback add "device missing 1 terminal;
+ connecting remainder to node VPWR" pale
+box 2975 110799 3101 110817
+feedback add "Could not determine device boundary" pale
+box 131639 56419 131849 56529
+feedback add "device missing 1 terminal;
+ connecting remainder to node VGND" pale
+box 131639 56079 131849 56253
+feedback add "device missing 1 terminal;
+ connecting remainder to node VPWR" pale
+box 137251 7459 138197 7569
+feedback add "device missing 1 terminal;
+ connecting remainder to node VGND" pale
+box 137251 7119 138197 7293
+feedback add "device missing 1 terminal;
+ connecting remainder to node VPWR" pale
+box 136515 7459 136909 7569
+feedback add "device missing 1 terminal;
+ connecting remainder to node VGND" pale
+box 136515 7119 136909 7293
+feedback add "device missing 1 terminal;
+ connecting remainder to node VPWR" pale
+box 138355 7459 138933 7569
+feedback add "device missing 1 terminal;
+ connecting remainder to node VGND" pale
+box 138355 7119 138933 7293
+feedback add "device missing 1 terminal;
+ connecting remainder to node VPWR" pale
+box 161634 84605 161636 84607
+feedback add "Label \"no_jumper_check\" attached to more than one unconnected node: c_83_258#" pale
+box 161737 84605 161739 84607
+feedback add "Label \"no_jumper_check\" attached to more than one unconnected node: c_186_258#" pale
+box 161784 84590 161786 84592
+feedback add "Label \"resistive_li1_ok\" attached to more than one unconnected node: c_233_273#" pale
+box 161596 84590 161598 84592
+feedback add "Label \"resistive_li1_ok\" attached to more than one unconnected node: c_45_273#" pale

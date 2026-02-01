@@ -1,0 +1,117 @@
+OpenROAD 41a51eaf4ca2171c92ff38afb91eb37bbd3f36da 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO]: Reading ODB at '/openlane/designs/Tensor/runs/PrePre-final_run/tmp/routing/./88-io_diode_legalized.odb'…
+define_corners Typical
+read_liberty -corner Typical /home/n0b0dy/.ciel/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty -corner Typical /home/n0b0dy/.ciel/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_1kbyte_1rw1r_8x1024_8_TT_1p8V_25C.lib
+Using 1e-12 for capacitance...
+Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Reading design constraints file at '/openlane/designs/Tensor/runs/PrePre-final_run/tmp/86-chip_top.sdc'…
+[INFO]: Setting signal min routing layer to: met1 and clock min routing layer to met3. 
+[INFO]: Setting signal max routing layer to: met5 and clock max routing layer to met5. 
+-congestion_iterations 50 -verbose -congestion_report_file /openlane/designs/Tensor/runs/PrePre-final_run/tmp/routing/groute-congestion.rpt
+[INFO GRT-0020] Min routing layer: met1
+[INFO GRT-0021] Max routing layer: met5
+[INFO GRT-0022] Global adjustment: 30%
+[INFO GRT-0023] Grid origin: (0, 0)
+[INFO GRT-0043] No OR_DEFAULT vias defined.
+[INFO GRT-0088] Layer li1     Track-Pitch = 0.4600  line-2-Via Pitch: 0.3400
+[INFO GRT-0088] Layer met1    Track-Pitch = 0.3400  line-2-Via Pitch: 0.3400
+[INFO GRT-0088] Layer met2    Track-Pitch = 0.4600  line-2-Via Pitch: 0.3500
+[INFO GRT-0088] Layer met3    Track-Pitch = 0.6800  line-2-Via Pitch: 0.6150
+[INFO GRT-0088] Layer met4    Track-Pitch = 0.9200  line-2-Via Pitch: 1.0400
+[INFO GRT-0088] Layer met5    Track-Pitch = 3.4000  line-2-Via Pitch: 3.1100
+[INFO GRT-0019] Found 298 clock nets.
+[INFO GRT-0001] Minimum degree: 2
+[INFO GRT-0002] Maximum degree: 20
+[INFO GRT-0003] Macros: 3
+[INFO GRT-0004] Blockages: 38607
+
+[INFO GRT-0053] Routing resources analysis:
+          Routing      Original      Derated      Resource
+Layer     Direction    Resources     Resources    Reduction (%)
+---------------------------------------------------------------
+li1        Vertical            0             0          0.00%
+met1       Horizontal     522000        144554          72.31%
+met2       Vertical       391500        140307          64.16%
+met3       Horizontal     261000         98091          62.42%
+met4       Vertical       156600         50649          67.66%
+met5       Horizontal      52200         22190          57.49%
+---------------------------------------------------------------
+
+[INFO GRT-0101] Running extra iterations to remove overflow.
+[INFO GRT-0197] Via related to pin nodes: 124208
+[INFO GRT-0198] Via related Steiner nodes: 3868
+[INFO GRT-0199] Via filling finished.
+[INFO GRT-0111] Final number of vias: 142213
+[INFO GRT-0112] Final usage 3D: 605498
+
+[INFO GRT-0096] Final congestion report:
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+---------------------------------------------------------------------------------------
+li1                  0             0            0.00%             0 /  0 /  0
+met1            144554         69997           48.42%             0 /  0 /  0
+met2            140307         66431           47.35%             0 /  0 /  0
+met3             98091         26753           27.27%             0 /  0 /  0
+met4             50649         14335           28.30%             0 /  0 /  0
+met5             22190          1343            6.05%             0 /  0 /  0
+---------------------------------------------------------------------------------------
+Total           455791        178859           39.24%             0 /  0 /  0
+
+[INFO GRT-0018] Total wirelength: 1719535 um
+[INFO GRT-0014] Routed nets: 30115
+[INFO GRT-0006] Repairing antennas, iteration 1.
+[INFO GRT-0043] No OR_DEFAULT vias defined.
+[WARNING ANT-0009] Net _00489_ requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net _00577_ requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net _00618_ requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net _00682_ requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net _00685_ requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net _00690_ requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net _00821_ requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net _00822_ requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net _00826_ requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net _00829_ requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net _00916_ requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net mem0_rdata\[19\] requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net mem0_rdata\[21\] requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net mem0_rdata\[22\] requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net mem0_rdata\[24\] requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net mem0_rdata\[26\] requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net mem0_rdata\[27\] requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net mem0_rdata\[2\] requires more than 10 diodes per gate to repair violations.
+[WARNING ANT-0009] Net mem0_rdata\[31\] requires more than 10 diodes per gate to repair violations.
+[INFO GRT-0012] Found 287 antenna violations.
+[INFO GRT-0015] Inserted 1394 diodes.
+[INFO GRT-0054] Using detailed placer to place 178 diodes.
+[INFO GRT-0009] rerouting 22491 nets.
+[INFO GRT-0001] Minimum degree: 2
+[INFO GRT-0002] Maximum degree: 25
+[INFO GRT-0006] Repairing antennas, iteration 2.
+[INFO GRT-0043] No OR_DEFAULT vias defined.
+[INFO GRT-0012] Found 71 antenna violations.
+[INFO GRT-0015] Inserted 159 diodes.
+[INFO GRT-0054] Using detailed placer to place 10 diodes.
+[INFO GRT-0009] rerouting 943 nets.
+[INFO GRT-0001] Minimum degree: 2
+[INFO GRT-0002] Maximum degree: 28
+[INFO GRT-0006] Repairing antennas, iteration 3.
+[INFO GRT-0043] No OR_DEFAULT vias defined.
+[INFO GRT-0012] Found 5 antenna violations.
+[INFO GRT-0015] Inserted 7 diodes.
+[INFO GRT-0009] rerouting 27 nets.
+[INFO GRT-0001] Minimum degree: 2
+[INFO GRT-0002] Maximum degree: 12
+[INFO GRT-0006] Repairing antennas, iteration 4.
+[INFO GRT-0043] No OR_DEFAULT vias defined.
+[INFO GRT-0012] Found 0 antenna violations.
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/Tensor/runs/PrePre-final_run/tmp/routing/90-global.odb'…
+Writing layout to '/openlane/designs/Tensor/runs/PrePre-final_run/tmp/routing/90-global.def'…
+Writing routing guides to '/openlane/designs/Tensor/runs/PrePre-final_run/tmp/routing/90-global.guide'…

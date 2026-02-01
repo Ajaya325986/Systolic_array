@@ -1,0 +1,46 @@
+OpenROAD 41a51eaf4ca2171c92ff38afb91eb37bbd3f36da 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO]: Reading ODB at '/openlane/designs/Tensor/runs/PrePre-final_run/results/routing/chip_top.odb'…
+define_corners Typical
+read_liberty -corner Typical /home/n0b0dy/.ciel/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty -corner Typical /home/n0b0dy/.ciel/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_1kbyte_1rw1r_8x1024_8_TT_1p8V_25C.lib
+Using 1e-12 for capacitance...
+Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+Reading design constraints file at '/openlane/designs/Tensor/runs/PrePre-final_run/tmp/86-chip_top.sdc'…
+[INFO]: Setting RC values...
+[INFO PSM-0001] Reading voltage source file: /openlane/designs/Tensor/vsrc.loc.
+[INFO PSM-0002] Output voltage file is specified as: /openlane/designs/Tensor/runs/PrePre-final_run/reports/signoff/103-irdrop-VPWR.rpt.
+[INFO PSM-0015] Reading location of VDD and VSS sources from /openlane/designs/Tensor/vsrc.loc.
+[INFO PSM-0076] Setting metal node density to be standard cell height times 5.
+[WARNING PSM-0030] VSRC location at (250.000um, 250.000um) and size 20.000um, is not located on an existing power stripe node. Moving to closest node at (254.930um, 270.880um).
+[WARNING PSM-0030] VSRC location at (130.000um, 170.000um) and size 20.000um, is not located on an existing power stripe node. Moving to closest node at (20.670um, 190.880um).
+[WARNING PSM-0030] VSRC location at (370.000um, 410.000um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (351.040um, 430.880um).
+[INFO PSM-0031] Number of PDN nodes on net VPWR = 15898.
+[INFO PSM-0064] Number of voltage sources = 3.
+[INFO PSM-0040] All PDN stripes on net VPWR are connected.
+########## IR report #################
+Worstcase voltage: 1.72e+00 V
+Average IR drop  : 5.61e-02 V
+Worstcase IR drop: 8.40e-02 V
+######################################
+[INFO PSM-0001] Reading voltage source file: /openlane/designs/Tensor/vsrc.loc.
+[INFO PSM-0002] Output voltage file is specified as: /openlane/designs/Tensor/runs/PrePre-final_run/reports/signoff/103-irdrop-VGND.rpt.
+[INFO PSM-0015] Reading location of VDD and VSS sources from /openlane/designs/Tensor/vsrc.loc.
+[INFO PSM-0076] Setting metal node density to be standard cell height times 5.
+[WARNING PSM-0030] VSRC location at (250.000um, 250.000um) and size 20.000um, is not located on an existing power stripe node. Moving to closest node at (254.930um, 277.580um).
+[WARNING PSM-0030] VSRC location at (130.000um, 170.000um) and size 20.000um, is not located on an existing power stripe node. Moving to closest node at (17.270um, 197.580um).
+[WARNING PSM-0030] VSRC location at (370.000um, 410.000um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (355.140um, 437.580um).
+[INFO PSM-0031] Number of PDN nodes on net VGND = 15920.
+[INFO PSM-0064] Number of voltage sources = 3.
+[INFO PSM-0040] All PDN stripes on net VGND are connected.
+########## IR report #################
+Worstcase voltage: 1.88e+00 V
+Average IR drop  : 5.54e-02 V
+Worstcase IR drop: 8.28e-02 V
+######################################

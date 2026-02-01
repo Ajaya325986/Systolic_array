@@ -1,0 +1,73 @@
+%Warning-PINMISSING: /openlane/designs/Tensor/src/chip_top.v:46:39: Cell has missing pin: 'clk1'
+   46 |     sky130_sram_1kbyte_1rw1r_32x256_8 u_mem_a (
+      |                                       ^~~~~~~
+                     ... For warning description see https://verilator.org/warn/PINMISSING?v=5.009
+                     ... Use "/* verilator lint_off PINMISSING */" and lint_on around source to disable this message.
+%Warning-PINMISSING: /openlane/designs/Tensor/src/chip_top.v:46:39: Cell has missing pin: 'csb1'
+   46 |     sky130_sram_1kbyte_1rw1r_32x256_8 u_mem_a (
+      |                                       ^~~~~~~
+%Warning-PINMISSING: /openlane/designs/Tensor/src/chip_top.v:46:39: Cell has missing pin: 'addr1'
+   46 |     sky130_sram_1kbyte_1rw1r_32x256_8 u_mem_a (
+      |                                       ^~~~~~~
+%Warning-PINMISSING: /openlane/designs/Tensor/src/chip_top.v:61:39: Cell has missing pin: 'clk1'
+   61 |     sky130_sram_1kbyte_1rw1r_32x256_8 u_mem_b (
+      |                                       ^~~~~~~
+%Warning-PINMISSING: /openlane/designs/Tensor/src/chip_top.v:61:39: Cell has missing pin: 'csb1'
+   61 |     sky130_sram_1kbyte_1rw1r_32x256_8 u_mem_b (
+      |                                       ^~~~~~~
+%Warning-PINMISSING: /openlane/designs/Tensor/src/chip_top.v:61:39: Cell has missing pin: 'addr1'
+   61 |     sky130_sram_1kbyte_1rw1r_32x256_8 u_mem_b (
+      |                                       ^~~~~~~
+%Warning-PINMISSING: /openlane/designs/Tensor/src/chip_top.v:79:39: Cell has missing pin: 'clk1'
+   79 |     sky130_sram_1kbyte_1rw1r_32x256_8 u_mem_c (
+      |                                       ^~~~~~~
+%Warning-PINMISSING: /openlane/designs/Tensor/src/chip_top.v:79:39: Cell has missing pin: 'csb1'
+   79 |     sky130_sram_1kbyte_1rw1r_32x256_8 u_mem_c (
+      |                                       ^~~~~~~
+%Warning-PINMISSING: /openlane/designs/Tensor/src/chip_top.v:79:39: Cell has missing pin: 'addr1'
+   79 |     sky130_sram_1kbyte_1rw1r_32x256_8 u_mem_c (
+      |                                       ^~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/Tensor/src/chip_top.v:18:22: Bits of signal are not used: 'matrix_out_raw'[639:32]
+                                                                    : ... In instance chip_top
+   18 |     wire [20*32-1:0] matrix_out_raw;
+      |                      ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/Tensor/macros/sram_stub.v:9:25: Signal is not used: 'clk0'
+                                                                       : ... In instance chip_top.u_mem_c
+    9 |     input  wire         clk0,
+      |                         ^~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/Tensor/macros/sram_stub.v:10:25: Signal is not used: 'csb0'
+                                                                        : ... In instance chip_top.u_mem_c
+   10 |     input  wire         csb0,
+      |                         ^~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/Tensor/macros/sram_stub.v:11:25: Signal is not used: 'web0'
+                                                                        : ... In instance chip_top.u_mem_c
+   11 |     input  wire         web0,
+      |                         ^~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/Tensor/macros/sram_stub.v:12:25: Signal is not used: 'wmask0'
+                                                                        : ... In instance chip_top.u_mem_c
+   12 |     input  wire [3:0]   wmask0,
+      |                         ^~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/Tensor/macros/sram_stub.v:13:25: Signal is not used: 'addr0'
+                                                                        : ... In instance chip_top.u_mem_c
+   13 |     input  wire [7:0]   addr0,
+      |                         ^~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/Tensor/macros/sram_stub.v:14:25: Signal is not used: 'din0'
+                                                                        : ... In instance chip_top.u_mem_c
+   14 |     input  wire [31:0]  din0,
+      |                         ^~~~
+%Warning-UNDRIVEN: /openlane/designs/Tensor/macros/sram_stub.v:15:25: Signal is not driven: 'dout0'
+                                                                    : ... In instance chip_top.u_mem_c
+   15 |     output wire [31:0]  dout0,
+      |                         ^~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/Tensor/macros/sram_stub.v:18:25: Signal is not used: 'clk1'
+                                                                        : ... In instance chip_top.u_mem_c
+   18 |     input  wire         clk1,
+      |                         ^~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/Tensor/macros/sram_stub.v:19:25: Signal is not used: 'csb1'
+                                                                        : ... In instance chip_top.u_mem_c
+   19 |     input  wire         csb1,
+      |                         ^~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/Tensor/macros/sram_stub.v:20:25: Signal is not used: 'addr1'
+                                                                        : ... In instance chip_top.u_mem_c
+   20 |     input  wire [7:0]   addr1
+      |                         ^~~~~

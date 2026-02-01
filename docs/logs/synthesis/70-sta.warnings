@@ -1,0 +1,16 @@
+Warning: /home/n0b0dy/OpenLane/designs/Tensor/chip_top.sdc line 54, 'u_mem_a/wmask0[3]' is not a valid endpoint.
+Warning: /home/n0b0dy/OpenLane/designs/Tensor/chip_top.sdc line 54, 'u_mem_a/wmask0[2]' is not a valid endpoint.
+Warning: /home/n0b0dy/OpenLane/designs/Tensor/chip_top.sdc line 54, 'u_mem_a/wmask0[1]' is not a valid endpoint.
+Warning: /home/n0b0dy/OpenLane/designs/Tensor/chip_top.sdc line 54, 'u_mem_a/wmask0[0]' is not a valid endpoint.
+Warning: /home/n0b0dy/OpenLane/designs/Tensor/chip_top.sdc line 54, 'u_mem_b/wmask0[3]' is not a valid endpoint.
+Warning: /home/n0b0dy/OpenLane/designs/Tensor/chip_top.sdc line 54, 'u_mem_b/wmask0[2]' is not a valid endpoint.
+Warning: /home/n0b0dy/OpenLane/designs/Tensor/chip_top.sdc line 54, 'u_mem_b/wmask0[1]' is not a valid endpoint.
+Warning: /home/n0b0dy/OpenLane/designs/Tensor/chip_top.sdc line 54, 'u_mem_b/wmask0[0]' is not a valid endpoint.
+Warning: /home/n0b0dy/OpenLane/designs/Tensor/chip_top.sdc line 54, 'u_mem_c/wmask0[3]' is not a valid endpoint.
+Warning: /home/n0b0dy/OpenLane/designs/Tensor/chip_top.sdc line 54, 'u_mem_c/wmask0[2]' is not a valid endpoint.
+Warning: /home/n0b0dy/OpenLane/designs/Tensor/chip_top.sdc line 54, 'u_mem_c/wmask0[1]' is not a valid endpoint.
+Warning: /home/n0b0dy/OpenLane/designs/Tensor/chip_top.sdc line 54, 'u_mem_c/wmask0[0]' is not a valid endpoint.
+Warning: chip_top.sdc line 64, port 'addr1[*]' not found.
+Warning: chip_top.sdc line 65, port 'csb1' not found.
+Warning: There are 81 unconstrained endpoints.
+[WARNING] Did not save OpenROAD database!

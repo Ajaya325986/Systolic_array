@@ -1,0 +1,55 @@
+[WARNING STA-0053] /home/n0b0dy/.ciel/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_1kbyte_1rw1r_8x1024_8_TT_1p8V_25C.lib line 1, library sky130_sram_1kbyte_1rw1r_8x1024_8_TT_1p8V_25C_lib already exists.
+[WARNING STA-0053] /home/n0b0dy/.ciel/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_1kbyte_1rw1r_8x1024_8_TT_1p8V_25C.lib line 1, library sky130_sram_1kbyte_1rw1r_8x1024_8_TT_1p8V_25C_lib already exists.
+[WARNING RSZ-0073] driver pin _33390_/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _33390_/X
+[WARNING RSZ-0073] driver pin _33390_/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _33390_/X
+[WARNING RSZ-0073] driver pin _33390_/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _33390_/X
+[WARNING RSZ-0073] driver pin _50006_/Y not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _50006_/Y
+[WARNING RSZ-0073] driver pin _33390_/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _33390_/X
+[WARNING RSZ-0073] driver pin _33390_/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _33390_/X
+[WARNING RSZ-0073] driver pin _50006_/Y not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _50006_/Y
+[WARNING RSZ-0073] driver pin _50006_/Y not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _50006_/Y
+[WARNING RSZ-0073] driver pin _33390_/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _33390_/X
+[WARNING RSZ-0073] driver pin _50006_/Y not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _50006_/Y
+[WARNING RSZ-0073] driver pin _50006_/Y not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _50006_/Y
+[WARNING RSZ-0073] driver pin _36743_/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _36743_/X
+[WARNING RSZ-0073] driver pin _48958_/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _48958_/X
+[WARNING RSZ-0073] driver pin _48958_/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _48958_/X
+[WARNING RSZ-0073] driver pin _48958_/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _48958_/X
+[WARNING RSZ-0073] driver pin _48958_/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _48958_/X
+[WARNING RSZ-0073] driver pin _33390_/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _33390_/X
+[WARNING RSZ-0073] driver pin _27130_/Y not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _27130_/Y
+[WARNING RSZ-0073] driver pin _33390_/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _33390_/X
+[WARNING RSZ-0073] driver pin rebuffer166/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver rebuffer166/X
+[WARNING RSZ-0073] driver pin rebuffer166/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver rebuffer166/X
+[WARNING RSZ-0073] driver pin _34839_/Y not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _34839_/Y
+[WARNING RSZ-0073] driver pin _34839_/Y not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _34839_/Y
+[WARNING RSZ-0073] driver pin rebuffer166/X not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver rebuffer166/X
+[WARNING RSZ-0073] driver pin _34839_/Y not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _34839_/Y
+[WARNING RSZ-0073] driver pin _34839_/Y not found in global routes
+[WARNING RSZ-0075] makeBufferedNet failed for driver _34839_/Y
+[WARNING RSZ-0062] Unable to repair all setup violations.

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <report-database>
- <description>XOR /openlane/designs/Tensor/runs/pre-final_run/results/signoff/chip_top.gds vs. /openlane/designs/Tensor/runs/pre-final_run/results/signoff/chip_top.klayout.gds</description>
+ <description>XOR /openlane/designs/Tensor/runs/PrePre-final_run/results/signoff/chip_top.gds vs. /openlane/designs/Tensor/runs/PrePre-final_run/results/signoff/chip_top.klayout.gds</description>
  <original-file/>
  <generator>drc: script='/openlane/scripts/klayout/xor.drc'</generator>
  <top-cell>chip_top</top-cell>

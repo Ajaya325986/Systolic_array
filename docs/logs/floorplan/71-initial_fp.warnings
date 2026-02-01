@@ -1,0 +1,3 @@
+[WARNING ORD-1011] LEF master sky130_sram_1kbyte_1rw1r_32x256_8 has no liberty cell.
+[WARNING STA-0328] port 'addr1[*]' not found.
+[WARNING STA-0328] port 'csb1' not found.

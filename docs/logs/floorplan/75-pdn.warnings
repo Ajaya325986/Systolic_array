@@ -1,0 +1,31 @@
+[WARNING PSM-0016] Voltage pad location (VSRC) file not specified, defaulting pad location to checkerboard pattern on core area.
+[WARNING PSM-0017] X direction bump pitch is not specified, defaulting to 140um.
+[WARNING PSM-0018] Y direction bump pitch is not specified, defaulting to 140um.
+[WARNING PSM-0019] Voltage on net VPWR is not explicitly set.
+[WARNING PSM-0022] Using voltage 1.800V for VDD network.
+[WARNING PSM-0065] VSRC location not specified, using default checkerboard pattern with one VDD every size bumps in x-direction and one in two bumps in the y-direction
+[WARNING PSM-0030] VSRC location at (110.300um, 96.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (20.670um, 110.880um).
+[WARNING PSM-0030] VSRC location at (950.300um, 96.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (947.010um, 110.880um).
+[WARNING PSM-0030] VSRC location at (390.300um, 236.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (489.190um, 270.880um).
+[WARNING PSM-0030] VSRC location at (670.300um, 376.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (671.040um, 350.880um).
+[WARNING PSM-0030] VSRC location at (110.300um, 516.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (111.040um, 510.880um).
+[WARNING PSM-0030] VSRC location at (950.300um, 516.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (911.040um, 510.880um).
+[WARNING PSM-0030] VSRC location at (390.300um, 656.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (351.040um, 590.880um).
+[WARNING PSM-0030] VSRC location at (670.300um, 796.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (671.040um, 830.880um).
+[WARNING PSM-0030] VSRC location at (110.300um, 936.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (20.670um, 910.880um).
+[WARNING PSM-0030] VSRC location at (950.300um, 936.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (911.040um, 910.880um).
+[WARNING PSM-0016] Voltage pad location (VSRC) file not specified, defaulting pad location to checkerboard pattern on core area.
+[WARNING PSM-0017] X direction bump pitch is not specified, defaulting to 140um.
+[WARNING PSM-0018] Y direction bump pitch is not specified, defaulting to 140um.
+[WARNING PSM-0019] Voltage on net VGND is not explicitly set.
+[WARNING PSM-0021] Using voltage 0.000V for ground network.
+[WARNING PSM-0065] VSRC location not specified, using default checkerboard pattern with one VDD every size bumps in x-direction and one in two bumps in the y-direction
+[WARNING PSM-0030] VSRC location at (110.300um, 96.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (17.270um, 117.580um).
+[WARNING PSM-0030] VSRC location at (950.300um, 96.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (947.010um, 117.580um).
+[WARNING PSM-0030] VSRC location at (390.300um, 236.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (492.590um, 197.580um).
+[WARNING PSM-0030] VSRC location at (670.300um, 376.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (675.140um, 357.580um).
+[WARNING PSM-0030] VSRC location at (950.300um, 516.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (915.140um, 517.580um).
+[WARNING PSM-0030] VSRC location at (390.300um, 656.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (355.140um, 597.580um).
+[WARNING PSM-0030] VSRC location at (670.300um, 796.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (675.140um, 757.580um).
+[WARNING PSM-0030] VSRC location at (110.300um, 936.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (17.270um, 917.580um).
+[WARNING PSM-0030] VSRC location at (950.300um, 936.800um) and size 10.000um, is not located on an existing power stripe node. Moving to closest node at (915.140um, 917.580um).
