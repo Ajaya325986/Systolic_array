@@ -52,9 +52,9 @@ set_load 0.1 [get_ports {result[*]}]
 set_multicycle_path -setup 32 -from [get_ports data_in_broad[*]] -to [get_ports result[*]]
 set_multicycle_path -hold 31 -from [get_ports data_in_broad[*]] -to [get_ports result[*]]
 
-set_multicycle_path -setup 32 -from [get_pins u_mem_a/dout0[*]] -to [all_registers]
-set_multicycle_path -setup 32 -from [get_pins u_mem_b/dout0[*]] -to [all_registers]
-set_multicycle_path -setup 32 -from [get_pins u_mem_c/dout0[*]] -to [all_registers]
+#set_multicycle_path -setup 32 -from [get_pins u_mem_a/dout0[*]] -to [all_registers]
+#set_multicycle_path -setup 32 -from [get_pins u_mem_b/dout0[*]] -to [all_registers]
+#set_multicycle_path -setup 32 -from [get_pins u_mem_c/dout0[*]] -to [all_registers]
 
 set_multicycle_path -hold 31 -from [get_pins u_mem_a/dout0[*]] -to [all_registers]
 set_multicycle_path -hold 31 -from [get_pins u_mem_b/dout0[*]] -to [all_registers]
