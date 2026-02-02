@@ -10,11 +10,19 @@
 
 ## 📌 Overview
 
-**Systolic_array** is a hardened systolic array accelerator designed for matrix multiplication workloads.  
-The design is implemented using the **OpenLane RTL-to-GDS flow** on **SkyWater 130nm**.
+![Final GDS View](./docs/images/gds_cover.png)
 
-This project was intentionally started **without SRAM macros** to expose real-world Physical Design bottlenecks such as congestion, fanout explosion, PDN failures, LVS mismatches, and timing instability.  
-After reaching physical limits, the RTL and floorplan were redesigned around **three SRAM macros**, resulting in a compact, routable, and timing-closed design.
+*Final GDSII snapshot showing three SRAM macros and standard-cell logic routed across M1–M5.*
+
+
+
+**Systolic_array** is a hardened systolic array accelerator designed for matrix multiplication workloads, implemented using the **OpenLane RTL-to-GDS flow** on **SkyWater 130nm**.
+
+This project started on **Dec 21st** with the explicit goal of pushing **open-source Physical Design tools** (Yosys, OpenROAD, OpenLane, KLayout) to their practical limits under **real hardware constraints**.
+
+Rather than optimizing for a quick win, the intent was to expose **real-world PD challenges**—congestion collapse, timing failures, PDN instability, LVS mismatches, and tool scalability limits—and resolve them through architectural and physical reasoning.
+
+The design evolved from a **macro-less architecture (~11 mm²)** that was physically infeasible to a **macro-driven, timing-closed ASIC (1.24 mm² @ 136.89 MHz)**.
 
 ---
 
@@ -29,7 +37,7 @@ After reaching physical limits, the RTL and floorplan were redesigned around **t
 | SRAM Macros | **3 × 32×256** |
 | Clock Frequency | **136.89 MHz** |
 | Supply Voltage | 1.8 V |
-| Utilization | ~80s% |
+| Utilization | ~80% |
 | IR Drop Target | 5% VDD |
 | DRC | Clean |
 | LVS | Clean |
@@ -39,204 +47,139 @@ After reaching physical limits, the RTL and floorplan were redesigned around **t
 
 ## 🧭 Project Evolution
 
-## 📸 Final Layout (GDSII)
-![Final GDS View](./docs/images/gds_cover.png)
-*Fig 1: Final GDSII showing 3x SRAM Macros (Red) and Standard Cell Logic routing (M1-M5).*
+This project mirrors how real silicon designs mature—starting from an ambitious architecture, hitting physical limits, and then being reshaped by layout, routing, timing, and power realities.
 
-### Phase 1: Macro-less Architecture (Intentional Stress Test)
+---
 
-The project began without SRAM macros, storing all state using flip-flops.
+## Phase 1: Macro-less Architecture (Intentional Stress Test)
 
-#### Issues Observed
-- 6–7× flip-flop overhead
-- Area expanded to ~11 mm²
-- Extreme routing congestion
-- Fanout and slew violations
-- Impossible timing closure
+The initial implementation avoided SRAM macros entirely, storing all intermediate data using flip-flops. This was an intentional stress test to expose Physical Design bottlenecks early.
 
-#### Routing Failure & Congestion (No Macros)
+### Routing & Congestion Failure
 ![Routing failure without macros](./docs/images/Rotuing_failure_without_macros.png)
 
-**Fig 1:** Congestion heat map showing >250% overflow caused by forcing tens of thousands of standard cells through narrow routing channels.
+**Fig:** Severe congestion caused by forcing thousands of registers through limited routing resources.
 
-This phase confirmed that **architecture decisions directly define physical feasibility**.
+### Observations
+- Severe register explosion
+- Synthesis runtime increased to hours
+- DRC consumed **42+ GB RAM**
+- Timing closure impossible
+
+### Outcome
+- Core area expanded to **~11 mm²**
+
+This phase proved that **architecture decisions dominate physical feasibility**.
 
 ---
 
 ## Phase 2: Macro-Based Redesign
 
-To resolve scalability issues, the RTL was redesigned using **three SRAM macros** for storage.
+To address scalability, the RTL was redesigned around **three SRAM macros**:
+- Macro A & B: Input storage
+- Macro C: Output accumulation
 
-### Benefits
-- Massive reduction in flip-flop count
-- Area reduced by ~7×
-- Improved routability
-- Feasible PDN and timing closure
+### Impact
+- Area reduced to **~1.49 mm²**
+- Congestion significantly reduced
+- Timing became feasible
 
-However, macro integration introduced new Physical Design challenges.
-
----
-
-## 🧱 Floorplanning Strategy (U-Shape)
-
-Initial macro placement created narrow “bowling-alley” channels that trapped routing.
-
-### Final Floorplan
-![U-Shape Floorplan](./docs/images/floorplan_u_shape.png)
-
-**Fig 2:** U-shape macro placement along the edges, creating a wide central routing region.
-
-### Key Techniques
-- U-shape macro placement
-- Custom `PL_MACRO_HALO` constraints
-- Aspect-ratio optimization
-- Macro alignment to routing grid
+New challenges emerged:
+- Macro pin accessibility
+- Narrow routing channels
+- Placement-driven setup/hold violations
 
 ---
 
-## 🧩 Standard Cell Placement
+## 🧱 Floorplanning & Macro Placement
 
-![Standard Cell Placement](./docs/images/std_cell_placement.png)
+Macro placement dominated routability, congestion, and timing.
 
-**Fig 3:** Standard cell placement after congestion optimization, showing balanced density and whitespace for buffering and ECOs.
+### Floorplan Snapshot
+![Macro + Std Cell Floorplan](./docs/images/floorplan_u_shape.png)
 
----
+**Fig:** Final macro-aware floorplan showing U-shaped macro placement along the periphery, creating a wide central routing channel.
 
-## 🚦 Congestion Analysis & Resolution
+### Techniques Applied
+- Flyline-driven macro positioning
+- Flipping and 180° macro rotations
+- Pin-order alignment with routing direction
+- Keep-out margin and halo tuning
 
-![Congestion Map](./docs/images/congestion_map.png)
-
-**Fig 4:** Post-optimization congestion map with overflow reduced below 100%.
-
-### Root Cause
-- Global utilization was low (~46%)
-- Local congestion caused by macro spacing and IO density
-- Router could not insert buffers to fix slew and fanout
-
-### Fixes Applied
-- Reduced `FP_CORE_UTIL`
-- Enabled aggressive buffering
-- Forced routing to upper metal layers (`RT_MIN_LAYER`)
-- Spread IO pins using `FP_IO_MODE 1`
-
----
-
-## ⚡ Power Distribution Network (PDN)
-
-### Issues Encountered
-- Missing horizontal Metal-5 straps
-- PDN stripes trimmed due to floating connections
-- Macro power pins not aligning with grid
-
-### Solution
-A custom `pdn_cfg.tcl` was written to explicitly define the full power stack:
-
-
-This ensured robust connectivity and eliminated PDN trimming.
-
----
-
-## 🔍 LVS Debugging (5,430 → 0)
-
-### Major Root Causes
-1. Floating inputs on unused SRAM ports  
-2. Unused dual-port clocks left floating  
-3. Row orientation mismatch (MX cells in N rows)  
-4. Macro pin hook-up blockages  
-
-### Fixes
-- Tied unused clocks to **VSS**
-- Disabled unused macro ports via enable pins
-- Used **Tie-Hi / Tie-Lo** cells
-- Legalized cell orientations
-- Increased macro keep-out margins
-
----
-
-## 🧪 DRC Status
-
-### Before Fix
-![DRC Violated](./docs/images/DRC_violated.png)
-
-**Fig 5:** DRC violations due to PDN overlap and insufficient macro spacing.
-
-### After Fix
-![DRC Clean](./docs/images/DRC_clean.png)
-
-**Fig 6:** Clean DRC after halo tuning, PDN offset correction, and cell padding.
+This phase reduced macro-adjacent congestion and stabilized setup/hold behavior.
 
 ---
 
 ## ⏱️ Timing Closure
 
-### Initial State
-- 10 ns clock (100 MHz)
-- Unconstrained SRAM outputs
-- Max slew and fanout violations
+Timing closure was achieved through **constraint discipline and physical reasoning**, not brute-force buffering.
 
-### Key Fixes
-- Manual constraints for SRAM outputs
-- Aggressive buffering
-- Target density tuned to ~0.83
-- Hold repair enabled
-- Antenna violations fixed using jumper insertion
+### Clock Sweep
+- 9.0 ns → 8.0 ns → 7.5 ns → 7.3 ns → **7.305 ns**
 
-### Final Result
-- Clock period: **7.305 ns**
-- Frequency: **136.89 MHz**
-- Setup slack: ~+70 ps
-- Hold: Clean
+### Key Learnings
+- Over-tight **max_transition** and **fanout** constraints caused excessive buffer insertion
+- Relaxing these constraints reduced critical-path delay
+- Input transition violations were fixed by correctly modeling a **strong external driver** in the SDC
 
+### CTS View
 ![CTS Highlight](./docs/images/cts_highlight.png)
 
-**Fig 7:** Clock Tree Synthesis with balanced insertion delay and clean skew.
+**Fig:** Clock Tree Synthesis with balanced insertion delay and clean skew across macro and standard-cell regions.
+
+Final frequency achieved: **136.89 MHz**
 
 ---
 
-## 🔥 Power Integrity & Reliability
+## ⚡ Power Distribution Network (PDN)
 
-### Dynamic IR Drop
-- Worst-case voltage: **1.57 V**
-- Voltage drop: ~228 mV (~12%)
-- Verdict: Functionally safe
+Macro dimensions were not integer multiples of standard-cell row height, leading to uneven tap-cell placement and early PDN failures.
 
-### Electromigration
-- Peak current: ~34 mA
-- Result: **0 EM violations**
+### PDN Challenges
+- Trimmed power stripes
+- Misaligned macro power pins
+- IR-drop uncertainty
 
----
+### Resolution
+- Custom PDN configuration using `pdn_cfg.tcl`
+- Explicit IR-drop analysis using VSRC modeling
+- Targeted **≤5% VDD**
+- Dense **Metal-5** straps, freeing lower metals for signal routing
 
-## 🛠️ Automation & Tooling
-
-- Custom Tcl scripts for:
-  - Worst timing path extraction
-  - Slew and fanout analysis
-  - PDN generation
-- OpenROAD GUI used for:
-  - LVS debugging
-  - Orientation verification
-  - Macro alignment
+This ensured stable power delivery without sacrificing routability.
 
 ---
 
-## 📂 Repository Structure
+## 🧪 Signoff Status
 
+### DRC Debugging
+
+**Before Fix**  
+![DRC Violated](./docs/images/DRC_violated.png)
+
+**After Fix**  
+![DRC Clean](./docs/images/DRC_clean.png)
+
+### Final Checks
+- ✅ Setup & Hold clean
+- ✅ DRC clean
+- ✅ LVS clean
+- ✅ IR & EM verified
 
 ---
 
-## 🚀 Final Status
+## 🚀 Final Takeaway
 
-- ✅ 136.89 MHz timing closed  
-- ✅ DRC clean  
-- ✅ LVS clean  
-- ✅ IR & EM verified  
-- ✅ Compact **1.24 mm²** core  
+This project was not about running OpenLane—it was about **owning the Physical Design problem** end to end.
 
-This project demonstrates **end-to-end Physical Design ownership**, from architectural trade-offs to signoff-level debugging.
+> Understanding *why* things break matters more than knowing *which command to run*.
+
+All RTL, scripts, reports, and GDS are fully open-sourced in this repository.
 
 ---
 
 ## 👤 Author
 
 **Ajay H R**  
-Physical Design Engineer | OpenLane | Sky130
+Physical Design Engineer | RTL-to-GDS | OpenLane | Sky130
+
