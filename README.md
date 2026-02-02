@@ -24,7 +24,7 @@ After reaching physical limits, the RTL and floorplan were redesigned around **t
 |------|------|
 | Technology | SkyWater 130nm |
 | Flow | OpenLane / OpenROAD |
-| Core Area | **1.49 mm²** |
+| Core Area | **1.24 mm²** |
 | Gate Count | **~120k** |
 | SRAM Macros | **3 × 32×256** |
 | Clock Frequency | **136.89 MHz** |
@@ -229,7 +229,7 @@ This ensured robust connectivity and eliminated PDN trimming.
 - ✅ DRC clean  
 - ✅ LVS clean  
 - ✅ IR & EM verified  
-- ✅ Compact **1.49 mm²** core  
+- ✅ Compact **1.24 mm²** core  
 
 This project demonstrates **end-to-end Physical Design ownership**, from architectural trade-offs to signoff-level debugging.
 
