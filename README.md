@@ -25,14 +25,15 @@ After reaching physical limits, the RTL and floorplan were redesigned around **t
 | Technology | SkyWater 130nm |
 | Flow | OpenLane / OpenROAD |
 | Core Area | **1.24 mm²** |
-| Gate Count | **~120k** |
+| Gate Count | **~3.16M** |
 | SRAM Macros | **3 × 32×256** |
 | Clock Frequency | **136.89 MHz** |
 | Supply Voltage | 1.8 V |
-| Utilization | ~75% |
-| IR Drop Target | 5% |
+| Utilization | ~80s% |
+| IR Drop Target | 5% VDD |
 | DRC | Clean |
 | LVS | Clean |
+| Antenna | Clean |
 
 ---
 
